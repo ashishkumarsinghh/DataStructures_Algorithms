@@ -1,4 +1,3 @@
-package medium;
 
 import java.util.Scanner;
 
@@ -13,7 +12,7 @@ class GraphEdge {
 	}
 }
 
-public class BuildingExpressWays {
+public class Solution {
 
 	public static int[] parent;
 	public static boolean[] visited;
