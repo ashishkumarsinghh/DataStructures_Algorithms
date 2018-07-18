@@ -21,22 +21,29 @@ public class FloydCycleDetectRemove {
 		SLLNode curr = head;
 		//detect cycle
 		SLLNode slowPtr, fastPtr;
+		//take a slow moving pointer and fast moving pointer, fast will move at twice the speed of slow.
 		slowPtr = head;
 		fastPtr = head.next;
 		while(slowPtr != null && fastPtr!=null && fastPtr.next!=null){
+			//if fast and slow meet, that is same data is present on fast and slow then there is a loop.
 			if(slowPtr.data == fastPtr.data){
+				//reset slow pointer in order to check for the point where the loop has started
 				slowPtr = head;
 				System.out.println("Loop detected." +" fastPtr at "+ fastPtr.data);
 				break;
 				
 			}
 			else{
+				//move slow pointer by 1 and fast pointer by 2.
 				slowPtr = slowPtr.next;
 				fastPtr = fastPtr.next.next;
 			}
 		}
 		
 		while(fastPtr.next.data != slowPtr.data){
+			//move both the pointers by 1, they will meet at the loop starting point.
+			//let n be cycle length, k where the fast.data was equal to slow.data, m be the start of loop. m+k is multiple of n.
+			// if m+k is multiple of n, we can reason that m = n-k because m+k = n => m = n-k
 			System.out.println("fast :" + fastPtr.data +" slow : "+slowPtr.data);
 			slowPtr = slowPtr.next;
 			fastPtr = fastPtr.next;
